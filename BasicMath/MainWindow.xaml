@@ -1,0 +1,25 @@
+﻿<Window x:Class="BasicMath.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicMath"
+        mc:Ignorable="d"
+        Title="Basic Math Demo" Height="525" Width="956">
+	<Grid>
+		<Grid.Resources>
+			<local:IntToStringConverter x:Key="IntToStringConverter" />
+			<local:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+		</Grid.Resources>
+		
+		<TextBox x:Name="num1" FontSize="50" Text="{Binding FirstNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IntToStringConverter}}" MaxLength="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="143" Margin="10,82,0,0" TextWrapping="Wrap" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="163"/>
+		<TextBox x:Name="num2" FontSize="50" Text="{Binding SecondNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IntToStringConverter}}" MaxLength="2" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="143" Margin="359,82,0,0" TextWrapping="Wrap" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="163"/>
+		<Label x:Name="equals" Content="=" FontSize="50" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="542,82,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="143" Width="131"/>
+		<RadioButton x:Name="plus" GroupName="OperationKind" Content="+" IsChecked="{Binding OperationKind, Mode=TwoWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:OperationKinds.Plus}}" FontSize="50" HorizontalAlignment="Left" Margin="231,82,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+		<RadioButton x:Name="minus" GroupName="OperationKind" Content="-" IsChecked="{Binding OperationKind, Mode=TwoWay, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static local:OperationKinds.Minus}}" FontSize="50" HorizontalAlignment="Left" Margin="231,159,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+		<TextBox x:Name="operation" Text="{Binding Operation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="50" HorizontalAlignment="Left" Height="143" Margin="329,297,0,0" TextWrapping="Wrap" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="609"/>
+		<Label x:Name="operationLabel" Content="Operation:" FontSize="50" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,297,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="143" Width="319"/>
+		<Label x:Name="result" Content="{Binding Result}" FontSize="50" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="627,82,0,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="143" Width="260"/>
+
+	</Grid>
+</Window>
